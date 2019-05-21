@@ -15,13 +15,12 @@ see https://github.com/YoheiKakiuchi/robotsimulation-docker
 
 https://github.com/agent-system/lecture2019/blob/master/documents/%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A020190424_docker.pdf
 
-#  エージェントシステム課題２回目
+
+# エージェントシステム課題 2回目
 
 ## 問い合わせ / Question
 
-気軽に質問してください agentsystemのissue
-
-https://github.com/agent-system/lecture2019/issues
+気軽に質問してください [agentsystemのissue](https://github.com/agent-system/lecture2019/issues)
 
 ## シミュレーションの実行方法
 
@@ -54,20 +53,20 @@ JAXONが使用することができる
 
 ### 環境を作りたい時には
 
-Task1-AizuSpiderSS.cnoid [ https://github.com/agent-system/aizuspider_description/blob/master/Task1-AizuSpiderSS.cnoid ]
+[Task1-AizuSpiderSS.cnoid](https://github.com/agent-system/aizuspider_description/blob/master/Task1-AizuSpiderSS.cnoid)
 を参考にすると、
 
-Task1-Agent-System2019.cnoid [ https://github.com/agent-system/aizuspider_description/blob/master/Task1-Agent-System2019.cnoid ]
+[Task1-Agent-System2019.cnoid](https://github.com/agent-system/aizuspider_description/blob/master/Task1-Agent-System2019.cnoid)
 をロードしているのが分かる
 
 JAXONの場合は、
-jaxon_task1.yaml [ https://github.com/agent-system/aizuspider_description/blob/master/jaxon_task1.yaml ]
+[jaxon_task1.yaml](https://github.com/agent-system/aizuspider_description/blob/master/jaxon_task1.yaml)
 を見ると、同じく
-Task1-Agent-System2019.cnoid [ https://github.com/agent-system/aizuspider_description/blob/master/Task1-Agent-System2019.cnoid ]
+[Task1-Agent-System2019.cnoid](https://github.com/agent-system/aizuspider_description/blob/master/Task1-Agent-System2019.cnoid)
 をロードしているのが分かる
 
 JAXONの場合はyamlファイルに環境モデルを追加しても良い　
-参考[ https://github.com/start-jsk/rtmros_choreonoid/blob/master/hrpsys_choreonoid_tutorials/config/footsal.yaml.in ]
+[参考](https://github.com/start-jsk/rtmros_choreonoid/blob/master/hrpsys_choreonoid_tutorials/config/footsal.yaml.in)
 
 
 ## choreonoidで振り付けした動作のシミュレーション上での実行
@@ -129,15 +128,15 @@ type: PoseSeq
 name: "PoseSeq"
 targetBody: "AizuSpider"
 refs:
-  -
+  - 
     time: 0 ### 時間
-    refer:
+    refer: 
       type: Pose
       name: ""
       joints: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ] ### JointID
-      q: [
-         0, 0, 0, 0, 0, 3.14159265, 3.14159265, 0, 0, 0,
-         0.959931089, 0.959931089, 0.959931089 ] ### 関節角度列
+      q: [ 
+        0, 0, 0, 0, 0, 3.14159265, 3.14159265, 0, 0, 0, 
+        0.959931089, 0.959931089, 0.959931089 ] ### 関節角度列
 ~~~
 
  - ```refs:```のリストを増やしていくことで姿勢を追加できる
@@ -151,7 +150,7 @@ choreonoid上（振り付け用のプロジェクトが良い）において、�
 File -> Open -> Pose Sequence
 ~~~
 
-## python インターフェース
+## python インターフェース 
 
 ### ROS Topics
 
@@ -219,4 +218,5 @@ roseus$ (send *ri* :angle-vector (send *robot* :angle-vector) 5000)
 ~~~
 
 see https://github.com/YoheiKakiuchi/robotsimulation-docker/tree/master/choreonoid_docker
+
 
