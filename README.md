@@ -38,6 +38,11 @@ WRS2018用のロボット(AizuSpider) 2台の協調、もしくは、JAXON(1台)
 - 壁に刺さっている棒を引き抜く
 - 奥の大きなブロックを動かす
 
+アドバンスド課題
+
+- AizuSpiderとJAXON(や他のロボット)との協調できるようにしてみる。
+- 違う環境を作って、その環境でタスクを解決してみる。
+
 ## 問い合わせ / Question
 
 わからないところ、うまく動かないところ、やってみたいこと 気軽に質問してください [agentsystemのissue](https://github.com/agent-system/lecture2019/issues)
