@@ -30,6 +30,8 @@ Subject: エージェントシステム課題2回目
 
 ## 課題
 
+[説明PDF](https://github.com/agent-system/lecture2019/blob/master/documents/Agentsystem2019_2nd_assignment.pdf)
+
 WRS2018用のロボット(AizuSpider) 2台の協調、もしくは、JAXON(1台)を使ってタスクを実行する
 
 - ガレキの下の小さなブロックを救出（被害者のダミー）
@@ -38,7 +40,7 @@ WRS2018用のロボット(AizuSpider) 2台の協調、もしくは、JAXON(1台)
 
 ## 問い合わせ / Question
 
-気軽に質問してください [agentsystemのissue](https://github.com/agent-system/lecture2019/issues)
+わからないところ、うまく動かないところ、やってみたいこと 気軽に質問してください [agentsystemのissue](https://github.com/agent-system/lecture2019/issues)
 
 ## シミュレーションの実行方法
 
