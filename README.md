@@ -16,7 +16,25 @@ see https://github.com/YoheiKakiuchi/robotsimulation-docker
 https://github.com/agent-system/lecture2019/blob/master/documents/%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A020190424_docker.pdf
 
 
-# エージェントシステム課題 2回目
+# エージェントシステム課題 2回目 (6月12日講義前まで）
+
+kyoin@jsk.t.u-tokyo.ac.jp へ課題をメール
+
+Subject: エージェントシステム課題2回目
+
+本文に 所属専攻 研究室 学生証番号 氏名
+を記述して、pdfを添付で上記メールアドレスへ
+適宜ビデオ等も添付のこと
+
+締め切り： 6月12日講義まで
+
+## 課題
+
+WRS2018用のロボット(AizuSpider) 2台の協調、もしくは、JAXON(1台)を使ってタスクを実行する
+
+- ガレキの下の小さなブロックを救出（被害者のダミー）
+- 壁に刺さっている棒を引き抜く
+- 奥の大きなブロックを動かす
 
 ## 問い合わせ / Question
 
