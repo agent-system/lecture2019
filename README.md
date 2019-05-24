@@ -63,11 +63,23 @@ $ ./run.sh roslaunch aizuspider_description aizuspider.launch
 
 AizuSpiderAA(右側) と AizuSpiderBB(左側) という名のロボットが２台使用することができる
 
+初期設定ではジョイスティックで移動しかできなくなっています。
+振り付け等で関節を動かしてください。
+
+以下で、全身のジョイスティック動作ができるようになります。（もう一回すると戻ります、相互に行き来するのはあまりうまく行きません）
+~~~
+./exec.sh rosrun aizuspider_description toggle_trajectory_controll.py -N AizuSpiderAA
+~~~
 
 ジョイスティックを2つ使う
 ~~~
 $ ./exec.sh roslaunch choreonoid_joy joy.launch namespace:=AizuSpiderAA device:=/dev/input/js0
 $ ./exec.sh roslaunch choreonoid_joy joy.launch namespace:=AizuSpiderBB device:=/dev/input/js1
+~~~
+
+robotsimulation-docker/choreonoid_docker/keyboard_joy.py としてキーボードから/joyを出せるサンプルがあります
+~~~
+./keyboard_joy.py key_joy:=/AizuSpiderAA/joy
 ~~~
 
 ### JAXON
