@@ -55,9 +55,9 @@ WRS2018用のロボット(AizuSpider) 2台の協調、もしくは、JAXON(1台)
 
 以下を行ってください
 ~~~
-docker pull choreonoidsim:16.04_release-1.7
+docker pull yoheikakiuchi/choreonoidsim:16.04_release-1.7
 もしくは
-docker pull choreonoidsim:16.04_no_gl_release-1.7
+docker pull yoheikakiuchi/choreonoidsim:16.04_no_gl_release-1.7
 ~~~
 
 ### AizuSpider
