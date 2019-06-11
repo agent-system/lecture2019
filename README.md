@@ -234,7 +234,7 @@ $ rostopic list
 ~~~
 $ exec.sh
 $$ hrpsyspy --robot 'JAXON_RED(Robot)0'
-$$ hcf.goPos(1, 0, 0) ## 1m 前方に進む
+$$ hcf.abc_svc.goPos(1, 0, 0) ## 1m 前方に進む
 ~~~
 
 以下にいろいろな関数が定義されている
