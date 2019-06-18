@@ -143,6 +143,13 @@ Clicking the point in the viewer, then the robot may reach to the object you cli
 
 you can use the same sample code as described in AizuSpider
 
+#### Feedback control of Inverted Pendulum
+
+You can see the code here
+
+https://github.com/agent-system/aizuspider_description/blob/master/InvPendulumController.cpp
+
+
 ### JAXON
 
 ![JaxonTask2](https://github.com/agent-system/lecture2019/blob/master/documents/jaxon_task2.png "JAXON Task2")
