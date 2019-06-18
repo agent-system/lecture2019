@@ -1,5 +1,6 @@
 # エージェントシステム 2019年度
 
+Install docker (nvidia-docker) and documentation and sources
 ~~~
 git clone https://github.com/agent-system/lecture2019.git
 cd lecture2019
@@ -9,18 +10,11 @@ git submodule update --init
 
 see https://github.com/YoheiKakiuchi/robotsimulation-docker
 
-# (5/8締め切り) エージェントシステム課題１回目
-
-課題は 「Choreonoidの振り付けする」　もしくは　「Dockerでシミュレーションを動かす」のいずれかを提出してください
-
-https://github.com/agent-system/lecture2019/blob/master/documents/%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A020190424_docker.pdf
-
-
-# エージェントシステム課題 2回目 (6月12日講義前まで）
+# エージェントシステム課題 3回目 (7/10 締め切り) / 3rd assignment (dead line: 10th July)
 
 kyoin@jsk.t.u-tokyo.ac.jp へ課題をメール
 
-Subject: エージェントシステム課題2回目
+Subject: エージェントシステム課題3回目
 
 本文に 所属専攻 研究室 学生証番号 氏名
 を記述して、pdfを添付で上記メールアドレスへ送信
@@ -28,7 +22,145 @@ Subject: エージェントシステム課題2回目
 適宜ビデオ、ソースコード等も添付のこと。
 github上でPull Requestしてもらえるとさらに良い。
 
-締め切り： 6月12日講義まで
+締め切り： 7月10日講義まで
+
+## 課題
+
+[説明PDF](https://github.com/agent-system/lecture2019/blob/master/documents/Agentsystem2019_3rd_assignment.pdf)
+
+Using robot: AizuSpider or JAXON or AizuSpiderWheel (you can use at least one robot)
+
+- Pick all objects on the floor and the table, then Put objects into TrashBox
+- Using recognition programs for detecting objects
+
+Advanced:
+
+- Using two AizuSpiders for cooperative work
+- Completely autonomous executing the task
+- Use the same program for the different robot
+- Update control algorithm of two-wheel inverted pendulum
+- Create your original task and environment and solve it
+
+## 問い合わせ / Question
+
+わからないところ、うまく動かないところ、やってみたいこと 気軽に質問してください [agentsystemのissue](https://github.com/agent-system/lecture2019/issues)
+
+You can use [agentsystemのissue](https://github.com/agent-system/lecture2019/issues) for asking about a trouble of simulation, how to use the robot, how to build the your own programs
+
+## シミュレーションの実行方法 / Simulation environment
+
+You should use the directory, ```lecture2019/robotsimulation-docker/choreonoid_docker```
+
+You should update before using the simulation environment
+~~~
+docker pull yoheikakiuchi/choreonoidsim:16.04dev_release-1.7
+or
+docker pull yoheikakiuchi/choreonoidsim:16.04dev_no_gl_release-1.7
+~~~
+
+### AizuSpider
+
+#### Execute simulation
+~~~
+./run.sh aizuspider_description aizuspider_task2.launch
+~~~
+
+#### Sample code (move)
+~~~
+./exec.sh
+$ roscd aizuspider_description
+$ move.py
+~~~
+
+#### Sample code (recognition / color filter)
+Color (HSI) Filter
+~~~
+./exec.sh
+$ roslaunch jsk_pcl_ros hsi_color_filter.launch INPUT:=/AizuSpiderAA/ARM_CAMERA/points
+~~~
+
+you can use rqt_reconfigure for changing parameters of the filter
+~~~
+./exec.sh
+$ rosrun rqt_reconfigure rqt_reconfigure
+~~~
+
+#### Sample code (recognition / plane segmentation)
+Plane Segmentation
+~~~
+./exec.sh
+$ roslaunch aizuspider_description plane_segmentation.launch
+~~~
+
+see [jsk_pcl_ros](https://jsk-docs.readthedocs.io/en/latest/jsk_recognition/doc/jsk_pcl_ros/)
+
+#### Sample code (Inverse-Kinematics and Grasp
+Solving Inverse-kinematics (see source file)
+~~~
+./exec.sh
+$ roscd aizuspider_description
+$ python solve_ik.py
+~~~
+
+Grasping Hand (see source file)
+~~~
+./exec.sh
+$ roscd aizuspider_description
+$ python grasp.py
+~~~
+
+#### Sample code (interactive pick and place)
+~~~
+./exec.sh
+$ roscd aizuspider_description
+$ python click_and_pick.py
+~~~
+
+~~~
+./exec.sh
+$ roslaunch aizuspider_description pointcloud_screenpoint.launch
+~~~
+
+Clicking the point in the viewer, then the robot may reach to the object you clicked
+
+
+### AizuSpiderWheel
+
+#### Execute simulation
+~~~
+./run.sh aizuspider_description aizuspider_wheel_task2.launch
+~~~
+
+you can use the same sample code as described in AizuSpider
+
+### JAXON
+
+#### Execute simulation
+~~~
+./run.sh rtmlaunch hrpsys_choreonoid_tutorials create_environment_sample.launch ROBOT_SETTING_YAML:=/choreonoid_ws/src/aizuspider_description/jaxon_task2.yaml
+~~~
+
+#### Sample code (recognition)
+Color (HSI) Filter
+~~~
+./exec.sh
+roslaunch jsk_pcl_ros hsi_color_filter.launch INPUT:=/multisense_local/organized_image_points2
+~~~
+
+#### Sample code (recognition)
+
+~~~
+./exec.sh
+$ roscd aizuspider_description
+$ roseus clicked-pick-jaxon.l
+~~~
+
+~~~
+./exec.sh
+$ roslaunch aizuspider_description pointcloud_screenpoint.launch image:=/multisense_local/left/ points:=/multisense_local/organized_image_points2 image_type:=image_rect_color
+~~~
+
+# OLD INFORMATION: (6/12)締め切り エージェントシステム課題 2回目
 
 ## 課題
 
@@ -44,10 +176,6 @@ WRS2018用のロボット(AizuSpider) 2台の協調、もしくは、JAXON(1台)
 
 - AizuSpiderとJAXON(や他のロボット)との協調できるようにしてみる。
 - 違う環境を作って、その環境でタスクを解決してみる。
-
-## 問い合わせ / Question
-
-わからないところ、うまく動かないところ、やってみたいこと 気軽に質問してください [agentsystemのissue](https://github.com/agent-system/lecture2019/issues)
 
 ## シミュレーションの実行方法
 
@@ -264,5 +392,11 @@ roseus$ (send *ri* :angle-vector (send *robot* :angle-vector) 5000)
 ~~~
 
 see https://github.com/YoheiKakiuchi/robotsimulation-docker/tree/master/choreonoid_docker
+
+# OLD INFORMATION: (5/8締め切り) エージェントシステム課題１回目
+
+課題は 「Choreonoidの振り付けする」　もしくは　「Dockerでシミュレーションを動かす」のいずれかを提出してください
+
+https://github.com/agent-system/lecture2019/blob/master/documents/%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A020190424_docker.pdf
 
 
