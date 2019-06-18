@@ -60,6 +60,8 @@ docker pull yoheikakiuchi/choreonoidsim:16.04dev_no_gl_release-1.7
 
 ### AizuSpider
 
+![AizuSpiderTask2](https://github.com/agent-system/lecture2019/blob/master/documents/AizuSpider_task2.png "AizuSpider Task2")
+
 #### Execute simulation
 ~~~
 ./run.sh aizuspider_description aizuspider_task2.launch
@@ -83,6 +85,12 @@ you can use rqt_reconfigure for changing parameters of the filter
 ~~~
 ./exec.sh
 $ rosrun rqt_reconfigure rqt_reconfigure
+~~~
+
+you can see sensor values and recognition results
+~~~
+./exec.sh
+$ rosrun rviz rviz -d $(aizuspider_description)/AizuSpiderAA.rviz
 ~~~
 
 #### Sample code (recognition / plane segmentation)
@@ -126,6 +134,8 @@ Clicking the point in the viewer, then the robot may reach to the object you cli
 
 ### AizuSpiderWheel
 
+![AizuSpiderWheelTask2](https://github.com/agent-system/lecture2019/blob/master/documents/AizuSpider_wheel_task2.png "AizuSpider-Wheel Task2")
+
 #### Execute simulation
 ~~~
 ./run.sh aizuspider_description aizuspider_wheel_task2.launch
@@ -134,6 +144,8 @@ Clicking the point in the viewer, then the robot may reach to the object you cli
 you can use the same sample code as described in AizuSpider
 
 ### JAXON
+
+![JaxonTask2](https://github.com/agent-system/lecture2019/blob/master/documents/jaxon_task2.png "JAXON Task2")
 
 #### Execute simulation
 ~~~
