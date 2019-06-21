@@ -51,6 +51,12 @@ You can use [agentsystemのissue](https://github.com/agent-system/lecture2019/is
 
 You should use the directory, ```lecture2019/robotsimulation-docker/choreonoid_docker```
 
+If you already have the directory, lecture2019 (cloned from https://github.com/agent-system/lecture2019.git). You should update your directory.
+~~~
+git pull origin master
+git submodule update
+~~~
+
 You should update before using the simulation environment
 ~~~
 docker pull yoheikakiuchi/choreonoidsim:16.04dev_release-1.7
