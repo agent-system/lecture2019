@@ -158,6 +158,7 @@ You can see the code here
 
 https://github.com/agent-system/aizuspider_description/blob/master/InvPendulumController.cpp
 
+You can change the code and recompile it with below commands.
 ~~~
 ./exec.sh
 $ roscd aizuspider_description
