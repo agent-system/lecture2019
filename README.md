@@ -147,7 +147,7 @@ Clicking the point in the viewer, then the robot may reach to the object you cli
 
 #### Execute simulation
 ~~~
-./run.sh aizuspider_description aizuspider_wheel_task2.launch
+./run.sh roslaunch aizuspider_description aizuspider_wheel_task2.launch
 ~~~
 
 you can use the same sample code as described in AizuSpider
@@ -157,6 +157,13 @@ you can use the same sample code as described in AizuSpider
 You can see the code here
 
 https://github.com/agent-system/aizuspider_description/blob/master/InvPendulumController.cpp
+
+~~~
+./exec.sh
+$ roscd aizuspider_description
+$ /usr/bin/c++ -DInvPendulumController_EXPORTS -I/choreonoid_ws/devel/include/choreonoid-1.7 -I/usr/include/eigen3 -I/opt/ros/kinetic/include -O3 -DNDEBUG -fPIC -std=c++11 -c InvPendulumController.cpp
+$ /usr/bin/c++  -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,InvPendulumController.so InvPendulumController.o -o InvPendulumController.so -lroscpp -L/opt/ros/kinetic/lib
+~~~
 
 
 ### JAXON
