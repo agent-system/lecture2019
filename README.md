@@ -70,14 +70,17 @@ docker pull yoheikakiuchi/choreonoidsim:16.04dev_no_gl_release-1.7
 
 #### Execute simulation
 ~~~
-./run.sh aizuspider_description aizuspider_task2.launch
+./run.sh roslaunch aizuspider_description aizuspider_task2.launch
 ~~~
 
 #### Sample code (move)
 ~~~
 ./exec.sh
 $ roscd aizuspider_description
-$ move.py
+## move -1 [m]
+$ ./move.py --trans -1 --name AizuSpiderAA
+## rotate 0.2 [rad]
+$ ./move.py --rot 0.2 --name AizuSpiderAA
 ~~~
 
 #### Sample code (recognition / color filter)
