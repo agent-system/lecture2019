@@ -1,0 +1,44 @@
+<launch>
+  <arg name="color" default="red"/>
+
+  <arg name="h_limit_max" default="10" if="$(eval color=='red')"/>
+  <arg name="h_limit_min" default="0" if="$(eval color=='red')"/>
+  <arg name="s_limit_max" default="125" if="$(eval color=='red')"/>
+  <arg name="s_limit_min" default="77" if="$(eval color=='red')"/>
+  <arg name="v_limit_max" default="256" if="$(eval color=='red')"/>
+  <arg name="v_limit_min" default="227" if="$(eval color=='red')"/>
+
+  <arg name="h_limit_max" default="245" if="$(eval color=='blue')"/>
+  <arg name="h_limit_min" default="225" if="$(eval color=='blue')"/>
+  <arg name="s_limit_max" default="165" if="$(eval color=='blue')"/>
+  <arg name="s_limit_min" default="95" if="$(eval color=='blue')"/>
+  <arg name="v_limit_max" default="256" if="$(eval color=='blue')"/>
+  <arg name="v_limit_min" default="225" if="$(eval color=='blue')"/>
+
+  <arg name="h_limit_max" default="125" if="$(eval color=='green')"/>
+  <arg name="h_limit_min" default="100" if="$(eval color=='green')"/>
+  <arg name="s_limit_max" default="211" if="$(eval color=='green')"/>
+  <arg name="s_limit_min" default="90" if="$(eval color=='green')"/>
+  <arg name="v_limit_max" default="256" if="$(eval color=='green')"/>
+  <arg name="v_limit_min" default="54" if="$(eval color=='green')"/>
+
+  <arg name="h_limit_max" default="1" if="$(eval color=='gray')"/>
+  <arg name="h_limit_min" default="0" if="$(eval color=='gray')"/>
+  <arg name="s_limit_max" default="1" if="$(eval color=='gray')"/>
+  <arg name="s_limit_min" default="0" if="$(eval color=='gray')"/>
+  <arg name="v_limit_max" default="255" if="$(eval color=='gray')"/>
+  <arg name="v_limit_min" default="254" if="$(eval color=='gray')"/>
+
+  <include file="$(find opencv_apps)/launch/hsv_color_filter.launch" >
+    <arg name="image" value="/AizuSpiderAA/ARM_CAMERA/image" />
+    <arg name="h_limit_max" value="$(arg h_limit_max)" />
+    <arg name="h_limit_min" value="$(arg h_limit_min)" />
+    <arg name="s_limit_max" value="$(arg s_limit_max)" />
+    <arg name="s_limit_min" value="$(arg s_limit_min)" />
+    <arg name="v_limit_max" value="$(arg v_limit_max)" />
+    <arg name="v_limit_min" value="$(arg v_limit_min)" />
+  </include>
+
+
+
+</launch>

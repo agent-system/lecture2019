@@ -1,0 +1,83 @@
+(defun get-boxes ()
+  (setq boxes (send (one-shot-subscribe "cluster_point_indices_decomposer/boxes"
+        jsk_recognition_msgs::BoundingBoxArray) :boxes)))
+
+(defun view-box (box)
+  (let* ((box-coords (ros::tf-pose->coords (send box :pose))) ;; coordinate class instance
+      (dims (ros::tf-point->pos (send box :dimensions))) ;; [mm]
+      (x (elt dims 0))
+      (y (elt dims 1))
+      (z (elt dims 2)))
+    (setq *cube* (make-cube x y z))
+    (send *cube* :newcoords box-coords)
+    (objects (list *cube* *a* *robot*))
+    (send *cube* :vertices)))
+
+(defun set-top ()
+  (let* ((top (send *cube* :face 0))
+         (center (elt (send top :centroid) 1)))
+    (send *a* :reset-coords)
+    (send *a* :translate center)
+    (send *a* :rotate 1.571 :y))
+  (send *irtviewer* :draw-objects))
+
+(defun set-front ()
+  (let* ((front (send *cube* :face 5))
+         (center (elt (send front :centroid) 1)))
+    (send *a* :reset-coords)
+    (send *a* :translate center))
+  (send *irtviewer* :draw-objects))
+
+(defun set-face (a)
+  (send *a* :newcoords (send *cube* :copy-worldcoords))
+  (cond
+    ((= a 0)
+      (send *a* :translate (float-vector (- (/ (x-of-cube *cube*) 2)) 0 0)))
+    ((= a 1)
+      (send *a* :rotate 3.1416 :y)
+      (send *a* :translate (float-vector (- (/ (x-of-cube *cube*) 2)) 0 0)))
+    ((= a 2)
+      (send *a* :rotate 1.5708 :z)
+      (send *a* :translate (float-vector (- (/ (y-of-cube *cube*) 2)) 0 0)))
+    ((= a 3)
+      (send *a* :rotate -1.5708 :z)
+      (send *a* :translate (float-vector (- (/ (y-of-cube *cube*) 2)) 0 0)))
+    ((= a 4)
+      (send *a* :rotate 1.5708 :y)
+      (send *a* :translate (float-vector (- (/ (z-of-cube *cube*) 2)) 0 0)))
+    ((= a 5)
+      (send *a* :rotate -1.5708 :y)
+      (send *a* :translate (float-vector (- (/ (z-of-cube *cube*) 2)) 0 0)))
+  )
+  (send *irtviewer* :draw-objects))
+
+(defun crouch (&optional (height 500))
+  (send *robot* :lleg :move-end-pos (float-vector 0 0 height))
+  (send *robot* :rleg :move-end-pos (float-vector 0 0 height))
+  (send *irtviewer* :draw-objects))
+
+(defun jaxon-upper-ik(coords arm &rest args)
+  (send* *robot* :inverse-kinematics (send *a* :worldcoords)
+    :move-target (send *robot* arm :end-coords)
+    :link-list (list* (send *robot* :chest_link0_lk) 
+                      (send *robot* :chest_link1_lk) 
+                      (send *robot* :chest_link2_lk) 
+                      (butlast (send *robot* arm :links)))
+    args))
+
+(defun go-catch (arm)
+  (send *robot* arm :move-end-pos #f(-150 0 0))
+  (send-ri 5000)
+  (send *ri* :wait-interpolation)
+  (send *robot* arm :move-end-pos #f(150 0 0))
+  (send-ri 3000)
+  (send *ri* :wait-interpolation)
+  (send *ri* :start-grasp arm))
+
+;; keep grasping when send ri
+(defun send-ri (&key (grasp nil) (time 5000))
+  (let* ((av (send *robot* :angle-vector)))
+    (if grasp
+      (replace av (list 90.0 90.0 90.0) :start1 6 :end1 9))
+    (send *ri* :angle-vector av time)))
+

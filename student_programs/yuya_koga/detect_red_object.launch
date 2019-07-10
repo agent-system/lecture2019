@@ -1,0 +1,40 @@
+<launch>
+  <arg name="arm_cam_image_topic" default="/AizuSpiderAA/ARM_CAMERA/image" />
+  <arg name="view" default="true"/>
+
+  <!-- Use opencv_apps to detect red circle objects -->
+  <group ns="camera">
+    <group ns="arm">
+      <node name="hsv_color_filter" pkg="opencv_apps" type="hsv_color_filter"
+          output="screen">
+        <remap from="image" to="$(arg arm_cam_image_topic)" />
+        <param name="h_limit_max" value="2" />
+        <param name="h_limit_min" value="0" />
+        <param name="s_limit_max" value="206" />
+        <param name="s_limit_min" value="40" />
+        <param name="v_limit_max" value="255" />
+        <param name="v_limit_min" value="90" />
+      </node>
+      <node name="general_contours" pkg="opencv_apps" type="general_contours"
+            output="screen">
+        <remap from="image" to="/camera/arm/hsv_color_filter/image" />
+        <param name="use_camera_info" value="false" />
+      </node>
+    </group>
+  </group>
+
+  <group if="$(arg view)">
+    <node name="arm_image__viewer" pkg="image_view" type="image_view"
+        output="screen">
+      <remap from="image" to="$(arg arm_cam_image_topic)"/>
+    </node>
+    <node name="hsv_filter_arm_viewer" pkg="image_view" type="image_view"
+        output="screen">
+      <remap from="image" to="/camera/arm/hsv_color_filter/image"/>
+    </node>
+    <node name="general_contours_arm_viewer" pkg="image_view" type="image_view"
+        output="screen">
+      <remap from="image" to="/camera/arm/general_contours/image"/>
+    </node>
+  </group>
+</launch>

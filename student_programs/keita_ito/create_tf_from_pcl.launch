@@ -1,0 +1,13 @@
+<launch>
+  <node pkg="nodelet" type="nodelet" name="my_cluster_decomposer"
+        args="load jsk_pcl/ClusterPointIndicesDecomposer object_detector_nodelet_manager"
+        output="screen">
+    <remap from="~input" to="plane_extraction/output" />
+    <remap from="~target" to="euclidean_clustering/output" />
+    <rosparam subst_value="true">
+      sort_by: z_axis
+      publish_tf: true
+      index: 0
+    </rosparam>
+    </node>
+</launch>
