@@ -83,8 +83,10 @@ docker pull yoheikakiuchi/choreonoidsim:16.04dev_no_gl_release-1.7
 
 ### AizuSpider
 
+Environment A
 ![Task3_A](https://github.com/agent-system/lecture2019/blob/master/documents/task3_a.png "AizuSpider Task3 A")
 
+Environment B
 ![Task3_B](https://github.com/agent-system/lecture2019/blob/master/documents/task3_b.png "AizuSpider Task3 B")
 
 #### Execute simulation
