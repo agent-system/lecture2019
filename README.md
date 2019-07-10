@@ -10,7 +10,122 @@ git submodule update --init
 
 see https://github.com/YoheiKakiuchi/robotsimulation-docker
 
-# エージェントシステム課題 3回目 (7/10 締め切り) / 3rd assignment (dead line: 10th July)
+# エージェントシステム課題 最終 (8/2 締め切り) / last assignment (dead line: 2nd August)
+
+kyoin@jsk.t.u-tokyo.ac.jp へ課題をメール
+
+Subject: エージェントシステム課題 最終
+
+本文に 所属専攻 研究室 学生証番号 氏名
+を記述して、pdfを添付で上記メールアドレスへ送信
+
+適宜ビデオ、ソースコード等も添付のこと。
+github上でPull Requestしてもらえるとさらに良い。
+
+締め切り： 8月2日 23:59 (日本時間)
+
+## 課題
+
+配置が異なる2パターンの環境があるので、
+同じプログラムで2つの環境においてタスクが実行できるように
+するにはどうするかを工夫してもらいたい。
+
+（ランダム配置等で多くのパターンの環境ができるように拡張するとすばらしい）
+
+
+様々な環境でエージェントが与えられた目標を達成するためのシステム構築の方法について、
+最終課題の環境において実際に作って動作させたシステムのシステム図を用いて説明しなさい。
+
+（課題や講義に出てきた、自律動作、学習、指示操縦、基礎制御などの異なる要素の組み合わせに
+よってシステムが構築されており、その構成にはどういう意図があるのかを説明できるとよい）
+
+（文献などを調査して、既存のシステムや構築法との比較があるべきである）
+
+
+Using robot: AizuSpider or JAXON or AizuSpiderWheel (you can use at least one robot)
+
+- There are two environment (Env. A and Env. B)
+- Pick all objects on the floor and the table, then Put objects into TrashBox
+- You can use the same software for the different environment
+
+Report:
+
+- Your report must contain the figure of the structure of your system system
+- You should describe your system using the figure 
+- You should survey researches for understanding other system
+
+
+## 問い合わせ / Question
+
+わからないところ、うまく動かないところ、やってみたいこと 気軽に質問してください [agentsystemのissue](https://github.com/agent-system/lecture2019/issues)
+
+You can use [agentsystemのissue](https://github.com/agent-system/lecture2019/issues) for asking about a trouble of simulation, how to use the robot, how to build the your own programs
+
+You can also see the other student's [programs](https://github.com/agent-system/lecture2019/tree/master/documents)
+
+
+## シミュレーションの実行方法 / Simulation environment
+
+You should use the directory, ```lecture2019/robotsimulation-docker/choreonoid_docker```
+
+If you already have the directory, lecture2019 (cloned from https://github.com/agent-system/lecture2019.git). You should update your directory.
+~~~
+git pull origin master
+git submodule update
+~~~
+
+You should update before using the simulation environment
+~~~
+docker pull yoheikakiuchi/choreonoidsim:16.04dev_release-1.7
+or
+docker pull yoheikakiuchi/choreonoidsim:16.04dev_no_gl_release-1.7
+~~~
+
+### AizuSpider
+
+![Task3_A](https://github.com/agent-system/lecture2019/blob/master/documents/task3_a.png "AizuSpider Task3 A")
+
+![Task3_B](https://github.com/agent-system/lecture2019/blob/master/documents/task3_b.png "AizuSpider Task3 B")
+
+#### Execute simulation
+Environment A
+~~~
+./run.sh roslaunch aizuspider_description aizuspider_task3.launch
+~~~
+
+Environment B
+~~~
+./run.sh roslaunch aizuspider_description aizuspider_task3.launch task:=TASK_B
+~~~
+
+### AizuSpiderWheel
+
+#### Execute simulation
+Environment A
+~~~
+./run.sh roslaunch aizuspider_description aizuspider_wheel_task3.launch
+~~~
+
+Environment B
+~~~
+./run.sh roslaunch aizuspider_description aizuspider_wheel_task3.launch task:=TASK_B
+~~~
+
+### JAXON
+
+#### Execute simulation
+Environment A
+~~~
+./run.sh rtmlaunch hrpsys_choreonoid_tutorials create_environment_sample.launch ROBOT_SETTING_YAML:=/choreonoid_ws/src/aizuspider_description/jaxon_task3_a.yaml
+~~~
+
+Environment B
+~~~
+./run.sh rtmlaunch hrpsys_choreonoid_tutorials create_environment_sample.launch ROBOT_SETTING_YAML:=/choreonoid_ws/src/aizuspider_description/jaxon_task3_b.yaml
+~~~
+
+
+#  OLD INFORMATION: エージェントシステム課題 3回目 (7/10 締め切り) / 3rd assignment (dead line: 10th July)
 
 kyoin@jsk.t.u-tokyo.ac.jp へ課題をメール
 
