@@ -12,19 +12,13 @@ see https://github.com/YoheiKakiuchi/robotsimulation-docker
 
 # エージェントシステム課題 最終 (8/2 締め切り) / last assignment (dead line: 2nd August)
 
-kyoin@jsk.t.u-tokyo.ac.jp へ課題をメール
+工学部2号館3階機械系事務室（307、308号室）に掲示あります。
 
-Subject: エージェントシステム課題 最終
+連絡先: kyoin@jsk.t.u-tokyo.ac.jp
 
-本文に 所属専攻 研究室 学生証番号 氏名
-を記述して、pdfを添付で上記メールアドレスへ送信
+## 課題のヒント
 
-適宜ビデオ、ソースコード等も添付のこと。
-github上でPull Requestしてもらえるとさらに良い。
-
-締め切り： 8月2日 23:59 (日本時間)
-
-## 課題
+レポートに必要なら、以下の環境を使ってみよう
 
 配置が異なる2パターンの環境があるので、
 同じプログラムで2つの環境においてタスクが実行できるように
@@ -34,25 +28,10 @@ github上でPull Requestしてもらえるとさらに良い。
 
 
 様々な環境でエージェントが与えられた目標を達成するためのシステム構築の方法について、
-最終課題の環境において実際に作って動作させたシステムのシステム図を用いて説明しなさい。
+最終課題の環境において実際に作って動作させたシステムのシステム図を用いて説明できるといいように思います
 
 （課題や講義に出てきた、自律動作、学習、指示操縦、基礎制御などの異なる要素の組み合わせに
 よってシステムが構築されており、その構成にはどういう意図があるのかを説明できるとよい）
-
-（文献などを調査して、既存のシステムや構築法との比較があるべきである）
-
-
-Using robot: AizuSpider or JAXON or AizuSpiderWheel (you can use at least one robot)
-
-- There are two environment (Env. A and Env. B)
-- Pick all objects on the floor and the table, then Put objects into TrashBox
-- You can use the same software for the different environment
-
-Report:
-
-- Your report must contain the figure of the structure of your system system
-- You should describe your system using the figure 
-- You should survey researches for understanding other system
 
 
 ## 問い合わせ / Question
