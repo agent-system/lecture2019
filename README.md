@@ -39,7 +39,7 @@ see https://github.com/YoheiKakiuchi/robotsimulation-docker
 
 You can use [agentsystemのissue](https://github.com/agent-system/lecture2019/issues) for asking about a trouble of simulation, how to use the robot, how to build the your own programs
 
-You can also see the other student's [programs](https://github.com/agent-system/lecture2019/tree/master/documents)
+You can also see the other student's [programs](https://github.com/agent-system/lecture2019/tree/master/student_programs)
 
 
 ## シミュレーションの実行方法 / Simulation environment
